@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0"  id        = "com.phonegap.helloworld" version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Get Location</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        This app helps people to find their current location
     </description>
 
-    <author href="http://npontu.com.com" email="snwolley@gmail.com">ASHESI</author>
+    <author href="http://npontu.com.com" email="gedeoniyonkuru@gmail.com">ASHESI</author>
 
 
         <!--
@@ -41,7 +41,7 @@
     <plugin name="cordova-plugin-geolocation" />
 
     <!-- Define app icon for each platform. -->
-    <icon src="icon.png" />
+    <icon src="gM.jpg" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
