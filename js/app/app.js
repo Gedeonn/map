@@ -4,10 +4,10 @@ var map;
 
 
 function initMap() {
-document.addEventListener("deviceready", onDeviceReady, false);
-}
+//document.addEventListener("deviceready", onDeviceReady, false);
+//}
 
-function onDeviceReady(){
+//function onDeviceReady(){
 document.getElementById("button").addEventListener("click", function(){
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(Posi);
