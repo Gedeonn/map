@@ -1,99 +1,45 @@
-// Since we will be making use of 3rd party functions (eg. navigator.geolocation.getCurrentPosition) which are not native javascript functions we will need
-// to add this function to the list of native javascript functions to allow javascript identify and execute it each time its called.
-// This is done by using the addEventListener() function.
-//
-
-var lati;
+var lat;
 var long;
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
-//We decide to create a function to handle the 3rd party functions (eg. navigator.geolocation.getCurrentPosition)
-// which we earlier added to the native functions of the javascript
-function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
-
-// onSuccess Geolocation
-//
-function onSuccess(position) {
-
-    var element = document.getElementById('geolocation');
-    element.innerHTML = 'Latitude: ' + position.coords.latitude  + '<br />' +
-        'Longitude: '          + position.coords.longitude             + '<br />' +
-        'Altitude: '           + position.coords.altitude              + '<br />' +
-        'Accuracy: '           + position.coords.accuracy              + '<br />' +
-        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
-        'Heading: '            + position.coords.heading               + '<br />' +
-        'Speed: '              + position.coords.speed                 + '<br />' +
-        'Timestamp: '          + position.timestamp          + '<br />';
-
-        
-      
-            
-}
-
-/*
 var map;
-var myCenter;
-function initMap() {
-  myCenter = new google.maps.LatLng(lati, long);
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: lati, lng: long },
-    zoom: 8
-  });
 
-  var marker = new google.maps.Marker({
-    position: myCenter,
-    animation: google.maps.Animation.BOUNCE
+
+function initMap() {
+document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+function onDeviceReady(){
+document.getElementById("button").addEventListener("click", function(){
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(Posi);
+
+  } function Posi(position) {
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+
+    myCenter = new google.maps.LatLng(lat, long);
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: lat, lng: long },
+      zoom: 8
+    });
+
+    var marker = new google.maps.Marker({
+      position: myCenter,
+      animation: google.maps.Animation.BOUNCE
+    }
+
+    );
+    marker.setMap(map);
+
+
+    google.maps.event.addListener(marker, 'click', function () {
+      var pos = map.getZoom();
+      map.setZoom(9);
+      map.setCenter(marker.getPosition());
+      window.setTimeout(function () { map.setZoom(pos); }, 3000);
+    });
   }
 
-  );
-  marker.setMap(map);
+});
 
-  google.maps.event.addListener(marker, 'click', function () {
-    map.setZoom(9);
-    map.setCenter(marker.getPosition());
-    window.setTimeout(function () { map.setZoom(pos); }, 3000);
-  });
-
-}  
-*/
-
-// onError Callback receives a PositionError object
-//
-function onError(error) {
-    alert('code: '    + error.code    + '\n' +
-        'message: ' + error.message + '\n');
+ 
 }
-/*
-console.log(lati+"yeah working");
-if(lati!=='undefined'){
-    var map;
-    var myCenter;
-    function initMap() {
-      myCenter = new google.maps.LatLng(lati, long);
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: lati, lng: long },
-        zoom: 8
-      });
-    
-      var marker = new google.maps.Marker({
-        position: myCenter,
-        animation: google.maps.Animation.BOUNCE
-      }
-    
-      );
-      marker.setMap(map);
-    
-      google.maps.event.addListener(marker, 'click', function () {
-        map.setZoom(9);
-        map.setCenter(marker.getPosition());
-        window.setTimeout(function () { map.setZoom(pos); }, 3000);
-      });
-    
-    }    
-}else{
-    document.getElementById('map').innerHTML('fuck you');
-}
-*/
